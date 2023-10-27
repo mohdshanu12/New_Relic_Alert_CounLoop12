@@ -1,12 +1,13 @@
-resource "newrelic_alert_policy" "practice_alert_with_count" {
-  name = "practice_alert_with_count"
+resource "newrelic_alert_policy" "First_Policy" {
+  name = " First_Policy"
+  //incident_preference = " PER_POLICY "
 }
 
 resource "newrelic_nrql_alert_condition" "practice_count" {
   count = length(var.count_alert_loop)
 
   account_id                     = var.count_alert_loop[count.index].account_id
-  policy_id                      = newrelic_alert_policy.practice_alert_with_count.id
+  policy_id                      = newrelic_alert_policy.First_Policy.id
   type                           = var.count_alert_loop[count.index].type
   name                           = var.count_alert_loop[count.index].name
   description                    = var.count_alert_loop[count.index].description
